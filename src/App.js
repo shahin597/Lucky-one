@@ -2,7 +2,16 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartPlus, faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faCartPlus} from '@fortawesome/free-solid-svg-icons'
+import image1 from './img/apex.jpg'
+import image2 from './img/ssb.jpg'
+import image3 from './img/sports.jpg'
+import image4 from './img/casual.jpg'
+import image5 from './img/lotto.jpg'
+import image6 from './img/converse.jpg'
+import image7 from './img/dj.jpg'
+import image8 from './img/normal.jpg'
+import image9 from './img/ladies.jpg'
 import {
   Button,
   Col,
@@ -19,57 +28,60 @@ const data = [
     id: 1,
     shoeName: "Converse",
     price: '560 tk',
-    image:
-      "https://static-01.daraz.com.bd/p/0247da9313c403fa5b00c014fd1f7684.jpg",
+    image:image1
   },
   {
     id: 2,
     shoeName: "Bata Shoe",
-    price: 800,
-    image:
-      "https://static-01.daraz.com.bd/p/0247da9313c403fa5b00c014fd1f7684.jpg",
+    price: '600 tk',
+    image:image2
   },
   {
     id: 3,
     shoeName: "APEX",
-    price: 1020,
-    image:
-      "https://static-01.daraz.com.bd/p/0247da9313c403fa5b00c014fd1f7684.jpg",
+    price: '1000 tk',
+    image:image3
   },
   {
     id: 4,
     shoeName: "SSB Loffer",
-    price: 1400,
-    image:
-      "https://static-01.daraz.com.bd/p/0247da9313c403fa5b00c014fd1f7684.jpg",
+    price: '1490 tk',
+    image:image4
   },
   {
     id: 5,
     shoeName: "Lotto",
-    price: 1530,
+    price: '1540 tk',
     image:
-      "https://static-01.daraz.com.bd/p/0247da9313c403fa5b00c014fd1f7684.jpg",
+      image5
+  },
+  {
+    id: 6,
+    shoeName: "Sport Snakers",
+    price: '4353 tk',
+    image:
+      image6
   },
   {
     id: 7,
-    shoeName: "Sport Snakers",
-    price: 532,
+    shoeName: "Casual shoe",
+    price: '1230 tk',
     image:
-      "https://static-01.daraz.com.bd/p/0247da9313c403fa5b00c014fd1f7684.jpg",
+      image7
   },
   {
     id: 8,
-    shoeName: "Casual shoe",
-    price: 1230,
+    shoeName: "Women Shoe",
+    price: '435 tk',
     image:
-      "https://static-01.daraz.com.bd/p/0247da9313c403fa5b00c014fd1f7684.jpg",
+      image8
   },
   {
     id: 9,
-    shoeName: "Women Shoe",
-    price: 480,
+    shoeName: "Casual Shoe",
+    price: '1080 tk',
     image:
-      "https://static-01.daraz.com.bd/p/0247da9313c403fa5b00c014fd1f7684.jpg",
+      image9
   },
 ];
 function App() {
@@ -99,7 +111,7 @@ function App() {
                         <CardTitle tag="h5">{item.shoeName}</CardTitle>
 
                         <CardSubtitle>Price:{item.price}</CardSubtitle>
-                        <Button className=" ms-2 font d-flex align-items-center"
+                        <Button className=" ms-2 font d-flex align-items-center bg-success text-white"
                           onClick={() => {
                             setSelectedList([...selectedList, item]);
                           }}
