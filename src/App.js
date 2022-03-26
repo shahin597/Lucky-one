@@ -16,64 +16,68 @@ const data = [
   {
     id: 1,
     shoeName: "Converse",
-    price: 56.7,
+    price: '560 tk',
     image:
       "https://static-01.daraz.com.bd/p/0247da9313c403fa5b00c014fd1f7684.jpg",
   },
   {
     id: 2,
     shoeName: "Bata Shoe",
-    price: 56.7,
+    price: 800,
     image:
       "https://static-01.daraz.com.bd/p/0247da9313c403fa5b00c014fd1f7684.jpg",
   },
   {
     id: 3,
     shoeName: "APEX",
-    price: 56.7,
+    price: 1020,
     image:
       "https://static-01.daraz.com.bd/p/0247da9313c403fa5b00c014fd1f7684.jpg",
   },
   {
     id: 4,
     shoeName: "SSB Loffer",
-    price: 56.7,
+    price: 1400,
     image:
       "https://static-01.daraz.com.bd/p/0247da9313c403fa5b00c014fd1f7684.jpg",
   },
   {
     id: 5,
     shoeName: "Lotto",
-    price: 56.7,
+    price: 1530,
     image:
       "https://static-01.daraz.com.bd/p/0247da9313c403fa5b00c014fd1f7684.jpg",
   },
   {
     id: 7,
     shoeName: "Sport Snakers",
-    price: 56.7,
+    price: 532,
     image:
       "https://static-01.daraz.com.bd/p/0247da9313c403fa5b00c014fd1f7684.jpg",
   },
   {
     id: 8,
     shoeName: "Casual shoe",
-    price: 56.7,
+    price: 1230,
     image:
       "https://static-01.daraz.com.bd/p/0247da9313c403fa5b00c014fd1f7684.jpg",
   },
   {
     id: 9,
     shoeName: "Women Shoe",
-    price: 56.7,
+    price: 480,
     image:
       "https://static-01.daraz.com.bd/p/0247da9313c403fa5b00c014fd1f7684.jpg",
   },
 ];
 function App() {
-  const [selectedItem, setSelectedItem] = useState({});
+  const [selectedItem, setSelectedItem] = useState(null);
   const [selectedList, setSelectedList] = useState([]);
-  console.log(selectedList);
+  const randomHandle = () => {
+    const random = Math.floor(Math.random() * selectedList.length);
+    setSelectedItem(random);
+    console.log(random, selectedList[random]);
+  };
   return (
     <div className="App">
       <Container>
@@ -95,8 +99,7 @@ function App() {
                         <CardSubtitle>Price:{item.price}</CardSubtitle>
                         <Button
                           onClick={() => {
-                            setSelectedItem(item);
-                            setSelectedList([...selectedList,item]);
+                            setSelectedList([...selectedList, item]);
                           }}
                         >
                           Add to card
@@ -109,12 +112,35 @@ function App() {
           </Col>
           <Col md={4}>
             <h3>Selected shoe</h3>
-            {selectedList.length > 0 &&
-              selectedList.map((item, i) => <Card>{item.shoeName}</Card>)}
-            <Button color="primary" className="d-block mb-4">
+            {selectedItem && selectedList.length > 0  ? (
+              <Card >
+                <div className="d-flex flex-direction-row align-items-center">
+
+                <h4>{selectedList[selectedItem]?.shoeName}</h4>
+                <p className="ms-4">{selectedList[selectedItem]?.price}</p>
+                </div>
+              </Card>
+            ) : (
+              selectedList.length > 0 &&
+              selectedList.map((item, i) => <Card className="mb-2 px-2"> <div  className="d-flex flex-direction-row align-items-center">
+                <img src={item.image} alt="" height={50} width={50}/> <div className="ms-3">
+                  
+                  <p>{item?.shoeName}</p> <p>{item?.price}</p></div></div></Card>)
+            )}
+            <Button
+              color="primary"
+              className="d-block mb-4"
+              onClick={() => randomHandle()}
+            >
               Choose One!
             </Button>
-            <Button color="success">Choose again</Button>
+            <Button color="success" onClick={() => {setSelectedList([]);
+            setSelectedItem(null)}}>
+              Choose again
+            </Button>
+          </Col>
+          <Col sm={12}>
+
           </Col>
         </Row>
       </Container>
