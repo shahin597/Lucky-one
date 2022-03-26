@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartPlus, faCoffee } from '@fortawesome/free-solid-svg-icons'
 import {
   Button,
   Col,
@@ -97,12 +99,12 @@ function App() {
                         <CardTitle tag="h5">{item.shoeName}</CardTitle>
 
                         <CardSubtitle>Price:{item.price}</CardSubtitle>
-                        <Button
+                        <Button className=" ms-2 font d-flex align-items-center"
                           onClick={() => {
                             setSelectedList([...selectedList, item]);
                           }}
                         >
-                          Add to card
+                          Add to card <FontAwesomeIcon icon={faCartPlus}/>
                         </Button>
                       </CardBody>
                     </Card>{" "}
